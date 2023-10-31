@@ -1,0 +1,47 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('restaurants', function (Blueprint $table) {
+            // create user_id column and make it foreign
+            $table->unsignedBigInteger("user_id")->after("vat_number");
+
+            $table->foreign("user_id")
+                ->references("id")
+                ->on("users");
+
+            // create cuisine_id column and make it foreign
+            $table->unsignedBigInteger("cuisine_id")->after("vat_number");
+
+            $table->foreign("cuisine_id")
+                ->references("id")
+                ->on("cuisines");
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('restaurants', function (Blueprint $table) {
+            // remove foreign and drop user_id column
+            $table->dropForeign("restaurants_user_id_foreign");
+            $table->dropColumn('user_id'); 
+
+            // remove foreign and drop cuisine_id column
+            $table->dropForeign("restaurants_cuisine_id_foreign");
+            $table->dropColumn('cuisine_id'); 
+        });
+    }
+};
