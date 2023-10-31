@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
+
+            // create orders table with mysql data types
             $table->id();
             $table->string("name", 100);
             $table->string("lastname", 100);

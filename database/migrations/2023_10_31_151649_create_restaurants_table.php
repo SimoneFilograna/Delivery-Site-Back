@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('restaurants', function (Blueprint $table) {
+            
+            // create restaurants table with mysql data types
             $table->id();
             $table->string("name", 100);
             $table->string("address", 255);

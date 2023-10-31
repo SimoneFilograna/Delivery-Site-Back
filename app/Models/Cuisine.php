@@ -10,6 +10,7 @@ class Cuisine extends Model
 {
     use HasFactory;
 
+    // Many to many relation to restaurant
     public function restaurants() {
         return $this->belongsToMany(Restaurant::class);
     }
