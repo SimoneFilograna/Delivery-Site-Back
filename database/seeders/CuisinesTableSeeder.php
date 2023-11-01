@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class CuisinesTableSeeder extends Seeder
 {
-
+    // create cuisines list
     private $cuisines = [
         "Italiano",
         "Brasiliano",
@@ -27,6 +27,7 @@ class CuisinesTableSeeder extends Seeder
      */
     public function run(): void
     {
+        // cycle and save on database
         foreach ($this->cuisines as $cuisine) {
             $newCuisine = new Cuisine();
             $newCuisine->name = $cuisine;
