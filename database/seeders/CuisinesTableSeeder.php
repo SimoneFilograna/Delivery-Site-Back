@@ -15,11 +15,11 @@ class CuisinesTableSeeder extends Seeder
         "Thailandese",
         "Messicano",
         "Giapponese",
-        "Indiana",
+        "Indiano",
         "Cinese",
         "Greco",
-        "Coreana",
-        "Marocchina",
+        "Coreano",
+        "Marocchino",
         "Pizza"
     ];
     /**
