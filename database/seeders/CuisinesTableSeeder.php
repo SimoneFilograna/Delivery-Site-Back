@@ -10,14 +10,14 @@ class CuisinesTableSeeder extends Seeder
 {
 
     private $cuisines = [
-        "Italiana",
-        "Brasiliana",
+        "Italiano",
+        "Brasiliano",
         "Thailandese",
-        "Messicana",
+        "Messicano",
         "Giapponese",
         "Indiana",
         "Cinese",
-        "Greca",
+        "Greco",
         "Coreana",
         "Marocchina",
         "Pizza"
