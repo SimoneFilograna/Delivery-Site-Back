@@ -11,8 +11,8 @@
                 <div class="col-4">
                     {{-- <a href="{{ route('admin.plates.show', $plate->id)}}"> --}}
                         <div class="card">
-                            <h3>{{ $plate->name }}</h3>
-                            <img src={{ asset('storage/' . $plate->image) }} alt="">
+                            <h3>{{ $plate->plate_name }}</h3>
+                            <img src={{ asset('storage/' . $plate->plate_image) }} alt="">
                             <p>{{ $plate->price }} € </p>
                             <p>{{ $plate->ingredients }}</p>
                             <p>{{ $plate->description }}</p>

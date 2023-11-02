@@ -33,7 +33,7 @@ class PlateController extends Controller
     public function store(StorePlateRequest $request) {
         $data = $request->validated();
 
-        $data['image'] = Storage::put("plates", $data["image"]); //immagini nello storage
+        $data['plate_image'] = Storage::put("plates", $data["plate_image"]); //immagini nello storage
         $data['restaurant_id'] = Auth::user()->restaurant->id; //id restaurant
         $plate = Plate::create($data); //fill e save
         return redirect()->route('admin.plates.index');
@@ -61,13 +61,13 @@ class PlateController extends Controller
         $plate = Plate::where("id", $id)->firstOrFail(); //id del piatto
         $data = $request->validated();
 
-        if (isset($data["image"])) {
-            if ($plate->image) {
-                Storage::delete($plate->image); //cancello dallo storage l'immagine che c'era prima della modifica
+        if (isset($data["plate_image"])) {
+            if ($plate->plate_image) {
+                Storage::delete($plate->plate_image); //cancello dallo storage l'immagine che c'era prima della modifica
             }
             //salvo file nel sistema
-            $image_percorso = Storage::put("plates", $data["image"]);
-            $data['image'] = $image_percorso;
+            $image_percorso = Storage::put("plates", $data["plate_image"]);
+            $data['plate_image'] = $image_percorso;
         }
         $plate -> update($data);// fill + save
 
@@ -81,8 +81,8 @@ class PlateController extends Controller
     {
         $plate = Plate::where("id", $id)->firstOrFail();
 
-        if ($plate->image) {
-            Storage::delete($plate->image); //cancello dallo storage l'immagine
+        if ($plate->plate_image) {
+            Storage::delete($plate->plate_image); //cancello dallo storage l'immagine
         }
         $plate->delete();
         

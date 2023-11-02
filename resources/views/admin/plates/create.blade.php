@@ -9,16 +9,16 @@
         @csrf()
         {{-- name --}}
         <div class="mb-3">
-            <label class="form-label">Nome Piatto</label><input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
-            @error('name')
+            <label class="form-label">Nome Piatto</label><input type="text" class="form-control @error('plate_name') is-invalid @enderror" name="plate_name" value="{{ old('plate_name') }}">
+            @error('plate_name')
                     <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
 
         {{-- image --}}
         <div class="mb-3">
-            <label class="form-label">Immagine</label><input type="file" accept="image/*" class="form-control @error('image') is-invalid @enderror" name="image">
-            @error('image')
+            <label class="form-label">Immagine</label><input type="file" accept="image/*" class="form-control @error('plate_image') is-invalid @enderror" name="plate_image">
+            @error('plate_image')
                     <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

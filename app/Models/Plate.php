@@ -12,9 +12,9 @@ class Plate extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name",
+        "plate_name",
         "ingredients",
-        "image",
+        "plate_image",
         "description",
         "price",
         "visibility",
