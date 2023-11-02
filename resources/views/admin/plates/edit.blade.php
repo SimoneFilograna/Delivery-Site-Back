@@ -3,13 +3,14 @@
 @section("content")
 
 <div class="container">
-    <h1>Nuovo Piatto</h1>
+    <h1>Modifica Piatto</h1>
 
     <form action="{{ route('admin.plates.update', $plate->id) }}" method="POST" enctype="multipart/form-data">
         @csrf()
+        @method('put')
         {{-- name --}}
         <div class="mb-3">
-            <label class="form-label">Nome Piatto</label><input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}">
+            <label class="form-label">Nome Piatto</label><input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $plate->name) }}">
             @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -25,7 +26,7 @@
 
         {{-- ingredients --}}
         <div class="mb-3">
-            <label class="form-label">Ingredienti</label><input type="text" class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') }}">
+            <label class="form-label">Ingredienti</label><input type="text" class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients', $plate->ingredients) }}">
             @error('ingredients')
                     <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -33,7 +34,7 @@
 
         {{-- price --}}
         <div class="mb-3">
-            <label class="form-label">Prezzo</label><input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}">
+            <label class="form-label">Prezzo</label><input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $plate->price) }}">
             @error('price')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
@@ -42,7 +43,7 @@
         {{-- description --}}
         <div class="mb-3">
             <label class="form-label @error('description') is-invalid @enderror">Description</label>
-                <textarea class="form-control" name="description">{{ old('description') }}</textarea>
+                <textarea class="form-control" name="description">{{ old('description', $plate->description) }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -63,7 +64,7 @@
             </label>
         </div>
         
-        <a class="btn btn-secondary" href="{{ route("admin.projects.index") }}">Annulla</a>
+        <a class="btn btn-secondary" href="{{ route("admin.plates.index") }}">Annulla</a>
         <button class="btn btn-primary">Aggiorna</button>
     </form>
 </div>

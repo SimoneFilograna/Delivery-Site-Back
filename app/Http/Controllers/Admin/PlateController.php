@@ -35,7 +35,7 @@ class PlateController extends Controller
 
         $data['image'] = Storage::put("plates", $data["image"]);
         $data['restaurant_id'] = Auth::user()->restaurant->id;
-        $plates = Plate::create($data); //fill e save
+        $plate = Plate::create($data); //fill e save
         return redirect()->route('admin.plates.index');
     }
 
@@ -43,24 +43,45 @@ class PlateController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $plate = Plate::where("id", $id)->firstOrFail();
+        return view('admin.plates.edit', ['plate' => $plate]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StorePlateRequest $request, int $id)
     {
-        //
+        $plate = Plate::where("id", $id)->firstOrFail();
+        $data = $request->validated();
+
+        if (isset($data["image"])) {
+            if ($plate->image) {
+                Storage::delete($plate->image); //cancello dallo storage l'immagine che c'era prima della modifica
+            }
+            //salvo file nel sistema
+            $image_percorso = Storage::put("plates", $data["image"]);
+            $data['image'] = $image_percorso;
+        }
+        $plate -> update($data);// fill + save
+
+        return redirect()->route('admin.plates.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $plate = Plate::where("id", $id)->firstOrFail();
+
+        if ($plate->image) {
+            Storage::delete($plate->image); //cancello dallo storage l'immagine
+        }
+        $plate->delete();
+        
+        return redirect()->route('admin.plates.index');
     }
 }

@@ -35,7 +35,7 @@ Route::middleware(['auth', 'verified'])
 
     //READ
     Route::get("/plates", [PlateController::class, "index"])->name("plates.index");
-    //Route::get("/plates/{plate}", [PlateController::class, "show"])->name("plates.show");
+    Route::get("/plates/{plate}", [PlateController::class, "show"])->name("plates.show");
 
     //UPDATE
     Route::get("/plates/{id}/edit", [PlateController::class, "edit"])->name("plates.edit");
