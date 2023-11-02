@@ -15,7 +15,7 @@ return new class extends Migration
 
             // create cuisines table with mysql data types
             $table->id();
-            $table->string("name", 50);
+            $table->string("cuisine_name", 50);
             $table->timestamps();
         });
     }

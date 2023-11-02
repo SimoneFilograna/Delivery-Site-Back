@@ -30,7 +30,7 @@ class CuisinesTableSeeder extends Seeder
         // cycle and save on database
         foreach ($this->cuisines as $cuisine) {
             $newCuisine = new Cuisine();
-            $newCuisine->name = $cuisine;
+            $newCuisine->cuisine_name = $cuisine;
             $newCuisine->save();
         }
     }

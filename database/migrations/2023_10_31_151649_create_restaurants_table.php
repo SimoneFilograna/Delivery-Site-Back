@@ -15,10 +15,10 @@ return new class extends Migration
             
             // create restaurants table with mysql data types
             $table->id();
-            $table->string("name", 100);
-            $table->string("address", 255);
-            $table->text("image");
-            $table->string("phone", 30);
+            $table->string("restaurant_name", 100);
+            $table->string("restaurant_address", 255);
+            $table->text("restaurant_image");
+            $table->string("restaurant_phone", 30);
             $table->string("vat_number", 50);
             $table->timestamps();
         });
