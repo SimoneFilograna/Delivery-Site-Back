@@ -11,6 +11,16 @@ class Plate extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "plate_name",
+        "ingredients",
+        "plate_image",
+        "description",
+        "price",
+        "visibility",
+        "restaurant_id",
+    ];
+
     // One to many relation to restaurant
     public function restaurant() {
         return $this->belongsTo(Restaurant::class);
