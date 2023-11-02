@@ -88,12 +88,12 @@
                         </div>
 
                         <div class="mb-4 user-box">
-                            <label for="address" class="col-form-label text-md-right">{{ __('Indirizzo *') }}</label>
+                            <label for="restaurant_address" class="col-form-label text-md-right">{{ __('Indirizzo *') }}</label>
 
                             <div class="col">
-                                <input id="address" type="text"
-                                    class="form-control @error('address') is-invalid @enderror" name="address"
-                                    value="{{ old('address') }}" required maxlength="255">
+                                <input id="restaurant_address" type="text"
+                                    class="form-control @error('restaurant_address') is-invalid @enderror" name="restaurant_address"
+                                    value="{{ old('restaurant_address') }}" required maxlength="255">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -104,12 +104,12 @@
                         </div>
 
                         <div class="mb-4 user-box">
-                            <label for="phone" class="col-form-label text-md-right">{{ __('Numero telefonico *') }}</label>
+                            <label for="restaurant_phone" class="col-form-label text-md-right">{{ __('Numero telefonico *') }}</label>
 
                             <div class="col">
-                                <input id="phone" type="text"
-                                    class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                    value="{{ old('phone') }}">
+                                <input id="restaurant_phone" type="text"
+                                    class="form-control @error('restaurant_phone') is-invalid @enderror" name="restaurant_phone"
+                                    value="{{ old('restaurant_phone') }}">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -120,11 +120,11 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="address" class="col-form-label text-md-right">{{ __('Logo Ristorante') }}</label>
-                            <input type="file" name="image"
-                                class="form-control  @error('image') is-invalid @enderror" id="image"
-                                aria-describedby="imageHelp" value="{{ old('image') }}" accept="image/*">
-                            @error('image')
+                            <label for="restaurant_image" class="col-form-label text-md-right">{{ __('Logo Ristorante') }}</label>
+                            <input type="file" name="restaurant_image"
+                                class="form-control  @error('restaurant_image') is-invalid @enderror" id="restaurant_image"
+                                aria-describedby="imageHelp" value="{{ old('restaurant_image') }}" accept="image/*">
+                            @error('restaurant_image')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -154,7 +154,7 @@
                                 @foreach ($cuisines as $cuisine)
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="cuisines[]" id="type{{ $cuisine->id }}" value="{{ $cuisine->id }}" {{ in_array($cuisine->id, old('cuisines', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="type{{ $cuisine->id }}">{{ $cuisine->name }}</label>
+                                        <label class="form-check-label" for="type{{ $cuisine->id }}">{{ $cuisine->cuisine_name }}</label>
                                     </div>
                                 @endforeach
                             </div>

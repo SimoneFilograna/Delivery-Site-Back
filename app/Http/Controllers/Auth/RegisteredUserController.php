@@ -39,14 +39,15 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data=$request->validate([
-            // 'name' => ['required', 'string', 'max:100'],
+            'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'name' => ['required', 'unique:restaurants,name', 'max:100'],
-            'address' => ['required', 'max:255'],
+            'restaurant_name' => ['required', 'unique:restaurants,restaurant_name', 'max:100'],
+            'restaurant_address' => ['required', 'max:255'],
             'vat_number' => ['required', 'unique:restaurants,vat_number', 'digits:11'],
-            'image' => ['required','image'],
-            'phone' => ['required', 'string', 'max:30'],
+            'restaurant_image' => ['required','image'],
+            'restaurant_phone' => ['required', 'string', 'max:30'],
+            'cuisines'=> ['array'],
         ]);
 
         $user = User::create([
@@ -56,11 +57,11 @@ class RegisteredUserController extends Controller
         ]);
     
         $restaurant = Restaurant::create([
-        'name' => $data['name'],
-        'address' => $data['address'],
+        'restaurant_name' => $data['restaurant_name'],
+        'restaurant_address' => $data['restaurant_address'],
         'vat_number' => $data['vat_number'],
-        'image' => $data['image'],
-        'phone' => $data['phone'],
+        'restaurant_image' => $data['restaurant_image'],
+        'restaurant_phone' => $data['restaurant_phone'],
         'user_id'=> $user->id,
         
         ]);
@@ -69,7 +70,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
         
-
+        
         if (key_exists("cuisines", $data)){
             $restaurant->cuisines()->attach($data['cuisines']);
         }
