@@ -151,14 +151,12 @@
                             <label for="types" class="col-form-label text-md-right">{{ __('Seleziona una o più tipi di cucina *') }}</label>
                         
                             <div class="col">
-                                @forelse ($cuisines as $cuisine)
+                                @foreach ($cuisines as $cuisine)
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="cuisines[]" id="type{{ $cuisine->id }}" value="{{ $cuisine->id }}" {{ in_array($cuisine->id, old('cuisines', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="type{{ $cuisine->id }}">{{ $cuisine->name }}</label>
                                     </div>
-                                @empty
-                                    <p>Nessun tipo registrato</p>
-                                @endforelse
+                                @endforeach
                             </div>
                         </div>
 

@@ -25,8 +25,9 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $cuisines = Cuisine::all();
+        $restaurants = Restaurant::all();
 
-        return view('auth.register', compact('cuisines'));
+        return view('auth.register', compact('cuisines', 'restaurants'));
     }
 
 
@@ -37,7 +38,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $data=$request->validate([
             // 'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -49,36 +50,29 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $data['name'],
+            'email' => $data['email'],
             'password' => Hash::make($request->password),
         ]);
-
-        // $data = [
-        //     'name' => $request->input('restaurant_name'),
-        //     'address' => $request->input('address'),
-        //     'image' => $request->input('image'),
-        //     'vat_number' => $request->input('vat_number'),
-        //     'phone' => $request->input('phone'),
-
-        // ];
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $cover_path = Storage::put('uploads', $image);
-        //     $data['cover_image'] = $cover_path;
-        // }
-        
+    
         $restaurant = Restaurant::create([
-        'name' => $request->restaurant_name,
-        'address' => $request->address,
-        'vat_number' => $request->vat_number,
-        'image' => $request->image,
-        'phone' => $request['phone'],
+        'name' => $data['name'],
+        'address' => $data['address'],
+        'vat_number' => $data['vat_number'],
+        'image' => $data['image'],
+        'phone' => $data['phone'],
+        'user_id'=> $user->id,
+        
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+        
+
+        if (key_exists("cuisines", $data)){
+            $restaurant->cuisines()->attach($data['cuisines']);
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }
