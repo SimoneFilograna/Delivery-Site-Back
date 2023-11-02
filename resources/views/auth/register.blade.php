@@ -9,7 +9,7 @@
             <div class="col-md-8">
                 <div class="login-box w-100">
                     <p>{{ __('Registrazione') }}</p>
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="mb-4 user-box">
@@ -104,12 +104,12 @@
                         </div>
 
                         <div class="mb-4 user-box">
-                            <label for="name" class="col-form-label text-md-right">{{ __('Numero telefonico *') }}</label>
+                            <label for="phone" class="col-form-label text-md-right">{{ __('Numero telefonico *') }}</label>
 
                             <div class="col">
                                 <input id="phone" type="text"
                                     class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                    value="{{ old('phone') }}" required autocomplete="phone">
+                                    value="{{ old('phone') }}">
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">

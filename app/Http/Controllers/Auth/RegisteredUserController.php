@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 
+use Illuminate\Support\Facades\Storage;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -35,15 +37,15 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        
         $request->validate([
-            'name' => ['required', 'string', 'max:100'],
+            // 'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurant_name' => ['required', 'unique:restaurants,name', 'max:100'],
+            'name' => ['required', 'unique:restaurants,name', 'max:100'],
             'address' => ['required', 'max:255'],
             'vat_number' => ['required', 'unique:restaurants,vat_number', 'digits:11'],
-            'phone' => ['nullable', 'string', 'max:30'],
+            'image' => ['required','image'],
+            'phone' => ['required', 'string', 'max:30'],
         ]);
 
         $user = User::create([
@@ -52,15 +54,27 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $restaurant = Restaurant::create([
-            'name' => $request->restaurant_name,
-            'address' => $request->address,
-            'vat_number' => $request->vat_number,
-            'image' => $request->image,
-            'phone' => $request->phone,
-        ]);
+        // $data = [
+        //     'name' => $request->input('restaurant_name'),
+        //     'address' => $request->input('address'),
+        //     'image' => $request->input('image'),
+        //     'vat_number' => $request->input('vat_number'),
+        //     'phone' => $request->input('phone'),
 
-        $restaurant->cuisines()->attach($request->cuisines);
+        // ];
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $cover_path = Storage::put('uploads', $image);
+        //     $data['cover_image'] = $cover_path;
+        // }
+        
+        $restaurant = Restaurant::create([
+        'name' => $request->restaurant_name,
+        'address' => $request->address,
+        'vat_number' => $request->vat_number,
+        'image' => $request->image,
+        'phone' => $request['phone'],
+        ]);
 
         event(new Registered($user));
 
