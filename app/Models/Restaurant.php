@@ -12,6 +12,14 @@ class Restaurant extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'address',
+        'vat_number',
+        'image',
+    ];
+
+
     // One to one relation to User
     public function user() {
         return $this->belongsTo(User::class);
