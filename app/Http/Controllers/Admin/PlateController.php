@@ -15,8 +15,8 @@ class PlateController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $restaurant = Auth::user()->restaurant->id;
-        $plates = Plate::where("restaurant_id", $restaurant)->get();
+        $restaurant = Auth::user()->restaurant->id; //prendiamo id restaurant
+        $plates = Plate::where("restaurant_id", $restaurant)->get(); //colleghiamo ai piatti
         return view('admin.plates.index', ['plates' => $plates]);
     }
 
@@ -33,8 +33,8 @@ class PlateController extends Controller
     public function store(StorePlateRequest $request) {
         $data = $request->validated();
 
-        $data['image'] = Storage::put("plates", $data["image"]);
-        $data['restaurant_id'] = Auth::user()->restaurant->id;
+        $data['image'] = Storage::put("plates", $data["image"]); //immagini nello storage
+        $data['restaurant_id'] = Auth::user()->restaurant->id; //id restaurant
         $plate = Plate::create($data); //fill e save
         return redirect()->route('admin.plates.index');
     }
@@ -45,8 +45,12 @@ class PlateController extends Controller
      */
     public function edit(int $id)
     {
-        $plate = Plate::where("id", $id)->firstOrFail();
-        return view('admin.plates.edit', ['plate' => $plate]);
+        $plate = Plate::where("id", $id)->firstOrFail(); //id del piatto
+        if (Auth::user()->restaurant->id == $plate->restaurant_id) { //se sei loggato con ristorante corretto allora puoi editare
+            return view('admin.plates.edit', ['plate' => $plate]); 
+        } else {
+            return abort(404); //se non sei loggato con ristorante corretto -> 404
+        }
     }
 
     /**
@@ -54,7 +58,7 @@ class PlateController extends Controller
      */
     public function update(StorePlateRequest $request, int $id)
     {
-        $plate = Plate::where("id", $id)->firstOrFail();
+        $plate = Plate::where("id", $id)->firstOrFail(); //id del piatto
         $data = $request->validated();
 
         if (isset($data["image"])) {
