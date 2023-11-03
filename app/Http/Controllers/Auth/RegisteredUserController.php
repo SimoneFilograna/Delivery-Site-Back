@@ -56,6 +56,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
     
+        $restaurantIMGPath = Storage::put("restaurants", $data['restaurant_image']);
+        $data['restaurant_image'] = $restaurantIMGPath;
+
         $restaurant = Restaurant::create([
         'restaurant_name' => $data['restaurant_name'],
         'restaurant_address' => $data['restaurant_address'],
