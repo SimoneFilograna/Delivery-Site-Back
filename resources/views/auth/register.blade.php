@@ -164,7 +164,7 @@
 
                         <div class="mb-4 mb-0">
                             <div class="col-md-8">
-                                <button id="btn-submit-register" type="submit" class="btn btn-primary">
+                                <button id="btn-submit-plate-register" type="submit" class="btn btn-primary">
                                     {{ __('Registrati') }}
                                 </button>
                             </div>
