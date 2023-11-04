@@ -5,9 +5,14 @@
 <div class="container">
     <h1>Modifica Piatto</h1>
 
-    <form action="{{ route('admin.plates.update', $plate->id) }}" method="POST" enctype="multipart/form-data">
+    <form id="edit-plate" action="{{ route('admin.plates.update', $plate->id) }}" method="POST" enctype="multipart/form-data" id="form">
         @csrf()
         @method('put')
+
+        <div class="alert alert-danger d-none" id="error">
+            <p id="error-message"></p>
+        </div>
+
         {{-- name --}}
         <div class="mb-3">
             <label class="form-label">Nome Piatto</label><input type="text" class="form-control @error('plate_name') is-invalid @enderror" name="plate_name" value="{{ old('plate_name', $plate->plate_name) }}">
@@ -65,7 +70,7 @@
         </div>
         
         <a class="btn btn-secondary" href="{{ route("admin.plates.index") }}">Annulla</a>
-        <button class="btn btn-primary">Aggiorna</button>
+        <button id="btn-submit-plate-edit" class="btn btn-primary signin">Aggiorna</button>
     </form>
 </div>
 
