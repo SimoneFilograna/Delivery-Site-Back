@@ -55,11 +55,12 @@ class RestaurantController extends Controller
     }
 
     public function show($id){
-        //prendo l'id del ristorante
+        //use id for trace correct restaurant
         $restaurant= Restaurant::findOrFail($id)
         ->with("cusines", "user")
         ->firstOrFail();
 
+        //add error when restaurant is not present
         if(!$restaurant) {
             abort(404);
         }
