@@ -64,5 +64,7 @@ class RestaurantController extends Controller
         if(!$restaurant) {
             abort(404);
         }
+
+        return response()->json($restaurant);
     }
 }
