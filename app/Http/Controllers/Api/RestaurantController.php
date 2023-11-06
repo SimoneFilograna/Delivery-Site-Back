@@ -57,7 +57,7 @@ class RestaurantController extends Controller
     public function show($id){
         //use id for trace correct restaurant
         $restaurant= Restaurant::where("id", $id)
-        ->with("cuisines", "user")
+        ->with("cuisines", "user", "plates")
         ->firstOrFail();
 
         //add error when restaurant is not present
