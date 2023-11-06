@@ -3,14 +3,16 @@
 @section('content')
     <div class="container mt-4">
 
-        @include('partials.errors')
-
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="login-box w-100">
                     <p>{{ __('Registrazione') }}</p>
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form id="register-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" id="form">
                         @csrf
+
+                        <div class="alert alert-danger d-none" id="error">
+                            <p id="error-message"></p>
+                        </div>
 
                         <div class="mb-4 user-box">
                             <label for="name" class="col-form-label text-md-right">{{ __('Nome *') }}</label>
@@ -162,7 +164,7 @@
 
                         <div class="mb-4 mb-0">
                             <div class="col-md-8">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="btn-submit-plate-register" type="submit" class="btn btn-primary">
                                     {{ __('Registrati') }}
                                 </button>
                             </div>
