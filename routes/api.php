@@ -29,3 +29,4 @@ Route::get("cuisines", [CuisineController::class,"index"]);
 
 //API for checkout
 Route::get("checkout/token", [CheckoutController::class,"index"]);
+Route::post("checkout", [CheckoutController::class,"store"]);
