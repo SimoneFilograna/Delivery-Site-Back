@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CuisineController;
 use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\CheckoutController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,7 @@ Route::get("restaurants/{id}", [RestaurantController::class, "show"]);
 
 //API for cuisines
 Route::get("cuisines", [CuisineController::class,"index"]);
+
+//API for checkout
+Route::get("checkout/token", [CheckoutController::class,"index"]);
+Route::post("checkout", [CheckoutController::class,"store"]);
