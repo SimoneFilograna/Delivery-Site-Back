@@ -49,7 +49,7 @@ class RestaurantsTableSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {      
         // cycle and save in database
         foreach ($this->restaurantsList as $restaurant) {
             $newRestaurant = new Restaurant();

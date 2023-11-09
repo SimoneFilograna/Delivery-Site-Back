@@ -16,7 +16,7 @@ class Order extends Model
         "customer_email",
         "customer_address",
         "customer_phone",
-        "ammount_paid",
+        "amount_paid",
     ];
 
     // Many to many relation to plate
