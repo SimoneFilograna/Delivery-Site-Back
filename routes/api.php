@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CuisineController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\CheckoutController;
+use App\Http\Controllers\Api\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,4 @@ Route::get("cuisines", [CuisineController::class,"index"]);
 //API for checkout
 Route::get("checkout/token", [CheckoutController::class,"index"]);
 Route::post("checkout", [CheckoutController::class,"store"]);
+Route::post("order", [OrderController::class,"store"]);

@@ -20,7 +20,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 15.99,
             "visibility" => 1,
             "restaurant_id" => 1,
-            "plate_image" => "https://png.pngtree.com/background/20230516/original/pngtree-sushi-platter-with-various-different-kinds-of-sushi-picture-image_2603145.jpg"
+            "plate_image" => "plates/sushi.jpg"
         ],
         [
             "plate_name" => "Tempura di verdure",
@@ -29,7 +29,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 10.50,
             "visibility" => 1,
             "restaurant_id" => 1,
-            "plate_image" => "https://www.zucchi.com/wp-content/uploads/2017/05/box-medio_tempura.jpg"
+            "plate_image" => "plates/tempura.jpg"
         ],
         [
             "plate_name" => "Ramen tradizionale",
@@ -38,7 +38,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 12.75,
             "visibility" => 1,
             "restaurant_id" => 1,
-            "plate_image" => "https://staticcookist.akamaized.net/wp-content/uploads/sites/21/2020/03/ramen-curiosita%CC%80-storia.jpeg"
+            "plate_image" => "plates/ramen.jpg"
         ],
 
         // mexican plates
@@ -50,7 +50,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 9.99,
             "visibility" => 1,
             "restaurant_id" => 2,
-            "plate_image" => "https://www.culinaryhill.com/wp-content/uploads/2022/12/Tacos-al-Pastor-Culinary-Hill-1200x800-1.jpg"
+            "plate_image" => "plates/tacos.webp"
         ],
         [
             "plate_name" => "Guacamole",
@@ -59,7 +59,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 7.50,
             "visibility" => 1,
             "restaurant_id" => 2,
-            "plate_image" => "https://www.todis.it/wp-content/uploads/2021/05/come-fare-il-guacamole-in-casa-2.jpg",
+            "plate_image" => "plates/guacamole.jpg",
         ],
         [
             "plate_name" => "Enchiladas",
@@ -68,7 +68,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 11.25,
             "visibility" => 1,
             "restaurant_id" => 2,
-            "plate_image" => "https://weelicious.com/wp-content/uploads/2021/05/Mexican-Enchiladas-11-1.jpg",
+            "plate_image" => "plates/tortilla.webp",
         ],
 
         // pizza plates
@@ -80,7 +80,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 8.99,
             "visibility" => 1,
             "restaurant_id" => 3,
-            "plate_image" => "https://www.anticaosteriadawalter.it/immagini/pizza-storia.jpg"
+            "plate_image" => "plates/margherita.jpg"
         ],
         [
             "plate_name" => "Quattro Stagioni",
@@ -89,7 +89,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 11.50,
             "visibility" => 1,
             "restaurant_id" => 3,
-            "plate_image" => "https://i0.wp.com/www.piccolericette.net/piccolericette/wp-content/uploads/2016/07/3017_Pizza.jpg?resize=895%2C616&ssl=1"
+            "plate_image" => "plates/4-stagioni.webp"
         ],
         [
             "plate_name" => "Capricciosa",
@@ -98,7 +98,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 10.75,
             "visibility" => 1,
             "restaurant_id" => 3,
-            "plate_image" => "https://www.melarossa.it/wp-content/uploads/2021/02/pizza-capricciosa.jpg",
+            "plate_image" => "plates/capricciosa.jpg",
         ],
 
         // indian plates
@@ -110,7 +110,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 14.99,
             "visibility" => 1,
             "restaurant_id" => 4,
-            "plate_image" => "https://images.dissapore.com/wp-content/uploads/2023/03/pollo-tikka-masala-ricetta-1200x675.jpg",
+            "plate_image" => "plates/pollo-tikka.jpg",
         ],
         [
             "plate_name" => "Samosa",
@@ -119,7 +119,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 6.50,
             "visibility" => 1,
             "restaurant_id" => 4,
-            "plate_image" => "https://staticcookist.akamaized.net/wp-content/uploads/sites/21/2021/09/samosa-di-pollo-1200x675.jpg"
+            "plate_image" => "plates/samosa.jpg"
         ],
         [
             "plate_name" => "Paneer Tikka",
@@ -128,7 +128,7 @@ class PlatesTableSeeder extends Seeder
             "price" => 11.75,
             "visibility" => 1,
             "restaurant_id" => 4,
-            "plate_image" => "https://geekrobocook.com/wp-content/uploads/2021/03/12.-Grilled-Paneer.jpg"
+            "plate_image" => "plates/paneer.jpg"
         ],
     ];
     /**
@@ -145,7 +145,7 @@ class PlatesTableSeeder extends Seeder
             $newPlate->price = $plate["price"];
             $newPlate->visibility = $plate["visibility"];
             $newPlate->restaurant_id = $plate["restaurant_id"];
-            $newPlate->plate_image = $plate["plate_image"];
+            $newPlate->plate_image = "/{$plate['plate_image']}";
             $newPlate->save();
         }
     }
