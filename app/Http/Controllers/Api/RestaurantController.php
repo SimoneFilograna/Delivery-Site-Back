@@ -11,20 +11,35 @@ use Illuminate\Support\Facades\Log;
 class RestaurantController extends Controller
 {
     public function index(Request $request) {
+
         //take cuisines data from HTTP request
         $cuisines = $request->all();
         
-        //check if there is any cuisines coming from HTTP request 
-        if(count($cuisines) <= 0) {
-            //get all restaurants from DB
+        //select of right model
+        $query = Restaurant::select('restaurants.*');
+
+        $searchText=$request->input('restaurant_name');
+
+         //check if there is any cuisines coming from HTTP request 
+        if(count($cuisines) <= 0 && empty($searchText)) {
+             //get all restaurants from DB
             $restaurants = Restaurant::with("cuisines")->get();
 
             //return JSON of them to frontend
             return response()->json($restaurants);
-        }
+        
+        } 
+           
         else {  
-            //select of right model
-            $query = Restaurant::select('restaurants.*');
+
+            //
+            if(!empty($searchText)){
+                $query->where('restaurant_name', 'like', '%' . $searchText . '%');
+
+                $restaurants = $query->with('cuisines')->get();
+                return response()->json($restaurants);
+            }
+else{
 
             //alias counter used in the foreach query
             $aliasCounter = 1;
@@ -45,13 +60,15 @@ class RestaurantController extends Controller
                 //counter add every iteration
                 $aliasCounter++;
             }
-    
+
             //clean the results of the query of duplicates and save them
             $restaurants = $query->distinct()->with('cuisines')->get();     
             
             //return JSON of them to frontend
             return response()->json($restaurants);
-        }   
+        }
+    }
+        
     }
 
     public function show($id){
@@ -67,4 +84,5 @@ class RestaurantController extends Controller
 
         return response()->json($restaurant);
     }
+
 }
