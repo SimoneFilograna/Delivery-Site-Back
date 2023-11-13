@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
+use App\Mail\NewOrder;
+use App\Mail\NewOrderReceived;
 use App\Models\Order;
 use App\Models\Plate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -24,6 +27,8 @@ class OrderController extends Controller
         $newOrder->amount_paid = $data["amount_paid"];
         $newOrder->save();
 
+        Mail::to($data['customer_email'])->send(new NewOrder($data)); 
+        Mail::to('irynavely93@gmail.com')->send(new NewOrderReceived($data)); 
         
         foreach ($data["cart"] as $item) {
             $plate = Plate::find($item['id']); //find ID
@@ -31,8 +36,9 @@ class OrderController extends Controller
             // link plate to order with quantity
             $newOrder->plates()->attach($plate, ['quantity' => $item['quantity']]);
         }
+
         
 
-        return response()->json($data);
+        return response()->json();
     }
 }
