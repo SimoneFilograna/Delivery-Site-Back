@@ -33,7 +33,7 @@ class CheckoutController extends Controller
         ]);
 
         $result = $gateway->transaction()->sale([
-            'amount' => '10.00',
+            'amount' => '5001.00',
             'paymentMethodNonce' => $nonceFromTheClient,
             'options' => [
               'submitForSettlement' => true

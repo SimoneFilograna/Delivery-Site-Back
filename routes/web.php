@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PlateController;
 use App\Http\Controllers\ProfileController;
@@ -48,6 +49,8 @@ Route::middleware(['auth', 'verified'])
     //READ ORDERS
     Route::get("/orders", [OrderController::class, "index"])->name("orders.index");
     Route::get("/orders/{id}", [OrderController::class, "show"])->name("orders.show");
+
+    Route::get('/stats', [StatController::class, "index"])->name('stats.index');
 });
 
 Route::middleware('auth')->group(function () {

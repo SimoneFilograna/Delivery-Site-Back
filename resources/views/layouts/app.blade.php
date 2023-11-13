@@ -22,6 +22,8 @@
     <!-- DataTables JavaScript -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
     @vite(['resources/js/validation.js'])
@@ -62,6 +64,10 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.orders.index') }}">Riepilogo Ordini</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.stats.index') }}">Statistiche</a>
                         </li>
                     </ul>
 
