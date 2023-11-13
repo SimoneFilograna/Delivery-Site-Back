@@ -44,9 +44,29 @@
             @enderror
         </div>
 
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const priceInput = document.getElementById("price");
+        
+                priceInput.addEventListener("keydown", function (event) {
+                    // Prevent entering negative values
+                    if (event.key === "-" || event.key === "e") {
+                        event.preventDefault();
+                    }
+                });
+        
+                priceInput.addEventListener("input", function () {
+                    // Prevent negative values ​​in the price field
+                    if (parseFloat(this.value) < 0) {
+                        this.value = 0;
+                    }
+                });
+            });
+        </script>
+
         {{-- description --}}
         <div class="mb-3">
-            <label class="form-label @error('description') is-invalid @enderror">Description</label>
+            <label class="form-label @error('description') is-invalid @enderror">Descrizione</label>
                 <textarea id="description" class="form-control" name="description">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>

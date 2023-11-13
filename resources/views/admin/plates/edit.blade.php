@@ -38,16 +38,37 @@
         </div>
 
         {{-- price --}}
-        <div class="mb-3">
-            <label class="form-label">Prezzo</label><input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $plate->price) }}">
-            @error('price')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
+<div class="mb-3">
+    <label class="form-label">Prezzo</label>
+    <input type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price', $plate->price) }}" id="price">
+    @error('price')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const priceInput = document.getElementById("price");
+
+        priceInput.addEventListener("keydown", function (event) {
+            // Prevent entering negative values
+            if (event.key === "-" || event.key === "e") {
+                event.preventDefault();
+            }
+        });
+
+        priceInput.addEventListener("input", function () {
+            // Prevent negative values ​​in the price field
+            if (parseFloat(this.value) < 0) {
+                this.value = 0;
+            }
+        });
+    });
+</script>
 
         {{-- description --}}
         <div class="mb-3">
-            <label class="form-label @error('description') is-invalid @enderror">Description</label>
+            <label class="form-label @error('description') is-invalid @enderror">Descrizione</label>
                 <textarea class="form-control" name="description">{{ old('description', $plate->description) }}</textarea>
                 @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
