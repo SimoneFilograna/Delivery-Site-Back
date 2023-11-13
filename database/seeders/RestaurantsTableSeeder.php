@@ -18,7 +18,8 @@ class RestaurantsTableSeeder extends Seeder
             "restaurant_image" => "restaurants/tokyo-fire.jpg",
             "restaurant_phone" => "02 1234567",
             "vat_number" => "12345678901",
-            "user_id" => 1
+            "user_id" => 1,
+            "cuisines" => ["Giapponese", "Cinese"]
         ],
         [
             "restaurant_name" => "Mexico Loco",
@@ -26,7 +27,8 @@ class RestaurantsTableSeeder extends Seeder
             "restaurant_image" => "restaurants/mexico-loco.jpg",
             "restaurant_phone" => "02 4592347",
             "vat_number" => "73497120482",
-            "user_id" => 2
+            "user_id" => 2,
+            "cuisines" => ["Messicano"]
         ],
         [
             "restaurant_name" => "Pizza Party",
@@ -34,7 +36,8 @@ class RestaurantsTableSeeder extends Seeder
             "restaurant_image" => "restaurants/pizza-partyg.jpg",
             "restaurant_phone" => "02 7284565",
             "vat_number" => "71492120588",
-            "user_id" => 3
+            "user_id" => 3,
+            "cuisines" => ["Italiano", "Pizza"]
         ],
         [
             "restaurant_name" => "Indian Family",
@@ -42,7 +45,8 @@ class RestaurantsTableSeeder extends Seeder
             "restaurant_image" => "restaurants/indian-family.jpg",
             "restaurant_phone" => "02 2392940",
             "vat_number" => "23457129499",
-            "user_id" => 4
+            "user_id" => 4,
+            "cuisines" => ["Indiano"]
         ],
     ];
     /**
@@ -61,6 +65,11 @@ class RestaurantsTableSeeder extends Seeder
             $newRestaurant->user_id = $restaurant["user_id"];
 
             $newRestaurant->save();
+
+            if (isset($restaurant['cuisines'])) {
+                $cuisines = Cuisine::whereIn('cuisine_name', $restaurant['cuisines'])->get();
+                $newRestaurant->cuisines()->attach($cuisines->pluck('id')->toArray());
+            }
         }
     }
 }
