@@ -28,7 +28,7 @@ class NewOrderReceived extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Hai ricevuto un nuovo ordine',
+            subject: 'Hai ricevuto un nuovo ordine su Deliveroo',
         );
     }
 
