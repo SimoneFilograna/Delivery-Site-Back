@@ -33,13 +33,15 @@ class CheckoutController extends Controller
         ]);
 
         $result = $gateway->transaction()->sale([
-            'amount' => '5001.00',
+            'amount' => '300.00',
             'paymentMethodNonce' => $nonceFromTheClient,
             'options' => [
-              'submitForSettlement' => true
+            'submitForSettlement' => true
             ]
         ]);
 
-        return response()->json(['result' => $result]);
+        $transactionStatus = $result->success ? $result->transaction->status : 'failed';
+
+        return response()->json(['transactionStatus' => $transactionStatus]);
     }
 }
