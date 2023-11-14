@@ -30,21 +30,24 @@ class OrderController extends Controller
         $newOrder->amount_paid = $data["amount_paid"];
         $newOrder->save();
 
-        Mail::to($data['customer_email'])->send(new NewOrder($data)); 
-
-        $restaurantId = $data["cart"][0]["restaurant_id"];
-
-        $userEmail = Restaurant::where('restaurants.id', $restaurantId)
-            ->join('users', 'restaurants.user_id', '=', 'users.id')
-            ->value('users.email');
-        Mail::to($userEmail)->send(new NewOrderReceived($data)); 
-
         foreach ($data["cart"] as $item) {
             $plate = Plate::find($item['id']); //find ID
     
             // link plate to order with quantity
             $newOrder->plates()->attach($plate, ['quantity' => $item['quantity']]);
         }
+        
+        
+        Mail::to($data['customer_email'])->send(new NewOrder($data));//send email to customer
+        //Log::info($newOrderInstance);
+
+        $restaurantId = $data["cart"][0]["restaurant_id"]; // take restaurant id
+
+        $userEmail = Restaurant::where('restaurants.id', $restaurantId) //take userEmail
+            ->join('users', 'restaurants.user_id', '=', 'users.id')
+            ->value('users.email');
+        Mail::to($userEmail)->send(new NewOrderReceived($data)); //send email to user when order is paid
+
         return response()->json();
     }
 }

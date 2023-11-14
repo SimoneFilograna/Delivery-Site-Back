@@ -1,8 +1,12 @@
 <x-mail::message>
 
-    Ciao {{ $dataToSend["customer_name"] }} {{ $dataToSend["customer_lastname"] }}!
+# Conferma Nuovo Ordine
 
-    Grazie per il tuo ordine.
-    L'ordine è in preparazione!
+Grazie per il tuo ordine!
+
+Piatti ordinati:
+@foreach ($dataToSend["cart"] as $item)
+- {{ $item['quantity'] }} x {{ $item['plate_name'] }} 
+@endforeach
     
 </x-mail::message>

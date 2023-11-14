@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Plate;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,6 +15,7 @@ class NewOrder extends Mailable
     use Queueable, SerializesModels;
 
     public $dataToSend = [];
+
     /**
      * Create a new message instance.
      */
