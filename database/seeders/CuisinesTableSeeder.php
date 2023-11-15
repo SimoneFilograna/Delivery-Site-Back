@@ -19,8 +19,16 @@ class CuisinesTableSeeder extends Seeder
         "Cinese",
         "Greco",
         "Coreano",
-        "Marocchino",
-        "Pizza"
+        "Pizza",
+        "Spagnolo",
+        "Turco",
+        "Vietnamita",
+        "Kebap",
+        "Burger",
+        "Fritto",
+        "Argentino",
+        "Cubano",
+        "Griglia"
     ];
     /**
      * Run the database seeds.
