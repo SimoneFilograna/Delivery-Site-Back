@@ -106,15 +106,15 @@
                         <div class="mb-3">
                             <label class="form-label">Visibilità:</label>
                             <div class="form-check">
-                                <input class="form-check-input" value="1" type="radio" name="visibility" id="flexRadioDefault1">
+                                <input class="form-check-input checked" value="0" type="radio" name="visibility" id="flexRadioDefault1">
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                    Si
+                                No
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" value="0" type="radio" name="visibility" id="flexRadioDefault2" checked>
+                                <input class="form-check-input" value="1" type="radio" name="visibility" id="flexRadioDefault2" checked>
                                 <label class="form-check-label" for="flexRadioDefault2">
-                                    No
+                                    Sì
                                 </label>
                             </div>
                         </div>

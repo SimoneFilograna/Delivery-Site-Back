@@ -21,7 +21,7 @@
     }
 </style>
 
-<div class="py-5">
+<div class="py-5 my-5">
 
     @if ($orders->isEmpty())
         <div class="d-flex align-items-center justify-content-center">
