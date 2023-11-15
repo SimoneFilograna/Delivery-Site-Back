@@ -1,17 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<style>
+    body {
+        background-image: url('/img/10.jpg'); /* Sostituisci 'path/to/your/image.jpg' con il percorso dell'immagine */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh; /* Imposta l'altezza al 100% della viewport */
+        margin: 0; /* Rimuovi il margine per evitare spazi bianchi attorno all'immagine */
+    }
 
-                <div class="card-body">
+    .container {
+        z-index: 1; /* Assicura che il contenuto sia sovrapposto all'immagine di sfondo */
+        position: relative;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.8); /* Aggiungi uno sfondo semi-trasparente alla card per rendere il testo più leggibile */
+    }
+</style>
+<div class="container mt-5">
+    <div class="row justify-content-center gold-text">
+        <div class="col-md-8">
+            <div class="card mt-5">
+                <div class="card-header gold-text login-head">{{ __('Login') }}</div>
+
+                <div class="card-body login-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="mb-4 row">
+                        <div class="mb-4 row gold-text">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -25,7 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 row">
+                        <div class="mb-4 row gold-text">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -39,7 +58,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 row">
+                        <div class="mb-4 row gold-text">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -53,12 +72,12 @@
 
                         <div class="mb-4 row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn my-button">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link gold-text" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                                 @endif
@@ -71,3 +90,5 @@
     </div>
 </div>
 @endsection
+
+

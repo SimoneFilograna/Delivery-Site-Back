@@ -81,7 +81,26 @@ class PlatesTableSeeder extends Seeder
             "visibility" => 1,
             "restaurant_id" => 3,
             "plate_image" => "plates/margherita.jpg"
+        ],       
+        [
+            "plate_name" => "Bismarck",
+            "ingredients" => "Salsa di pomodoro, mozzarella, prosiutto, uovo",
+            "description" => "Classica pizza italiana con salsa di pomodoro, mozzarella di bufala, prosciutto e un uovo all'occhio di bue.",
+            "price" => 8.99,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_bismarck.jpg"
         ],
+        [
+            "plate_name" => "Diavola",
+            "ingredients" => "Salsa di pomodoro, mozzarella, salame piccante, pepe",
+            "description" => "Classica pizza italiana con salsa di pomodoro, mozzarella di bufala, salamino piccante, pepe e un filo di olio di oliva",
+            "price" => 8.99,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_diavola.jpg"
+        ],
+
         [
             "plate_name" => "Quattro Stagioni",
             "ingredients" => "Salsa di pomodoro, mozzarella, funghi, prosciutto, carciofi, olive",
@@ -99,6 +118,60 @@ class PlatesTableSeeder extends Seeder
             "visibility" => 1,
             "restaurant_id" => 3,
             "plate_image" => "plates/capricciosa.jpg",
+        ],
+        [
+            "plate_name" => "Napoli",
+            "ingredients" => "Salsa di pomodoro, mozzarella, acciughe",
+            "description" => "Pizza napoletana con salsa di pomodoro, mozzarella e acciughe.",
+            "price" => 9.25,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_napoli.webp",
+        ],
+        [
+            "plate_name" => "Quattro Formaggi",
+            "ingredients" => "Salsa di pomodoro, mozzarella, gorgonzola, fontina, provolone",
+            "description" => "Pizza con quattro formaggi: mozzarella, gorgonzola, fontina e provolone.",
+            "price" => 11.00,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/quattro_formaggi.jpg",
+        ],
+        [
+            "plate_name" => "Vegetariana",
+            "ingredients" => "Salsa di pomodoro, mozzarella, melanzane, zucchine, peperoni",
+            "description" => "Pizza vegetariana con melanzane, zucchine e peperoni.",
+            "price" => 10.50,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_vegetariana.jpg",
+        ],
+        [
+            "plate_name" => "Pesce",
+            "ingredients" => "Salsa di pomodoro, mozzarella, tonno, acciughe, olive",
+            "description" => "Pizza con tonno, acciughe e olive.",
+            "price" => 11.25,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_pesce.jpg",
+        ],
+        [
+            "plate_name" => "Salame",
+            "ingredients" => "Salsa di pomodoro, mozzarella, salame",
+            "description" => "Pizza con salame.",
+            "price" => 10.00,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_salame.webp",
+        ],
+        [
+            "plate_name" => "Prosciutto e Funghi",
+            "ingredients" => "Salsa di pomodoro, mozzarella, prosciutto cotto, funghi",
+            "description" => "Pizza con prosciutto cotto e funghi.",
+            "price" => 10.75,
+            "visibility" => 1,
+            "restaurant_id" => 3,
+            "plate_image" => "plates/pizza_prosciutto_funghi.webp",
         ],
 
         // indian plates
