@@ -78,7 +78,7 @@
                             </a>
 
                             <div class="dropdown-menu z-1 dropdown-menu-right gold-text" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item gold-text" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
+                                <a class="dropdown-item gold-text" href="{{ url('admin/plates') }}">{{__('Prodotti')}}</a>
                                 <a class="dropdown-item gold-text" href="{{ url('admin/profile') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item gold-text" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">

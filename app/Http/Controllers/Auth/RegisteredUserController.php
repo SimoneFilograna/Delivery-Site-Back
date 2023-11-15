@@ -78,6 +78,6 @@ class RegisteredUserController extends Controller
             $restaurant->cuisines()->attach($data['cuisines']);
         }
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route("admin.plates.create");
     }
 }
