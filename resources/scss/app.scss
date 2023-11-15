@@ -2,7 +2,247 @@
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 @import './partials/variables';
 
-.btn-aggiungi a {
+:root{
+    --bs-border-color-translucent:rgb(89, 89, 89); 
+
+}
+
+.logo_text {     
+    color: $gold_text;     
+    font-weight: bold;     
+    font-size: 38px;
+    &:hover{
+        color:$gold-text;
+    }
+}
+
+a{
     text-decoration: none;
+    color: $bg_color;
+}
+
+nav{
+    background-color: $bg_color;
+}
+
+/* Stile per i link nella barra di navigazione */
+.navbar-nav a.nav-link {
+    color: $gold_text; 
+}
+
+/* Effetto hover per i link */
+.navbar-nav a.nav-link:hover {
+    color: #dfc203; /* Colore del testo giallo al passaggio del mouse */
+}
+
+/* Colore del testo dell'utente quando il dropdown è aperto */
+#navbarDropdown:focus {
+    color: #dfc203; 
+}
+
+/* Colore di sfondo grigio per la card del dropdown */
+.dropdown-menu {
+    background-color: rgb(51, 51, 51); 
+}
+
+/* Stile per il link utente nel dropdown */
+.dropdown-menu a {
+    color: $gold_text; 
+}
+
+/* Effetto hover per il link utente nel dropdown */
+.dropdown-menu a:hover {
+    background-color: $bg_color; 
+    color: $gold_text; 
+}
+
+.alert-danger{
+    color: $bg_color;
+    background-color: $gold_text;
+}
+
+// Stile Bottone
+.my-button{
+    background-color: $gold_text;
+    border-radius: 0;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    &:hover{
+        color:$gold-text;
+        background-color: $bg_color;
+        border-color: $gold-text;
+    }
+} 
+
+// Stile Bottone secondario
+.my-button-secondary{
+    background-color: white;
+    color: $bg_color;
+    border-radius: 0;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    &:hover{
+        color:$gold-text;
+        background-color: $bg_color;
+        border-color: $gold-text;
+    }
+}
+
+// Stile Bottone piccolo
+.my-button-small{
+    background-color: $gold_text;
+    color: $bg_color;
+    border-radius: 0;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+
+    &:hover{
+        color:$gold-text;
+        background-color: $bg_color;
+        border-color: $gold-text;
+    }
+}
+
+// Stile Bottone secondario piccolo
+.my-button-secondary-small{
+    background-color: white;
+    color: $bg_color;
+    border-radius: 0;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+
+    &:hover{
+        color:$gold-text;
+        background-color: $bg_color;
+        border-color: $gold-text;
+    }
+}
+
+.btn-aggiungi:hover a {
+    color: $gold-text;
+}
+
+.gold-text{
+    color: $gold_text;
+}
+
+.bg-dark{
+    background-color: $bg_color;
+}
+
+.login-head{
+    background-color: rgb(70, 70, 70);;
+}
+
+.login-body{
+    background-color: rgb(51, 51, 51);
+}
+
+#input:focus{
+    border-color: $gold_text ;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Colora le checkbox di giallo quando sono selezionate */
+input[type="checkbox"]:checked {
+    background-color: $gold-text; 
+}
+
+/* Radio button selezionati */
+.form-check-input:checked {
+    background-color: #dfc203;
+    border-color: $gold-text;
+}
+
+/* Rimuovi i bordi dalla card del form */
+.card {
+    border: none;
+    border-radius: 0.50rem 0.25rem 0 0;
+    box-shadow: none; 
+}
+
+.card img {
+    height: 100%;
+    width: 100%; 
+    object-fit: cover; 
+}
+
+.card-head {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.navbar-toggler-icon {
+    background-color: $gold-text;
+    border: 2px solid white;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    background-color: white;
+}
+
+.dataTables_wrapper .dataTables_filter label{
+    color: $gold_text;
+}
+
+
+.dataTables_wrapper label{
+    color: $gold_text;
+}
+
+.dataTables_wrapper .dataTables_length select{
+    background-color: white;
+    color: black;
+}
+
+table.dataTable thead .sorting {
+    color: $gold_text;
+    background-color:rgb(70, 70, 70);
+}
+
+.table.dataTable tbody th, .table.dataTable tbody td   {
+    background-color:  rgb(51, 51, 51);
     color: white;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled{
+    color: $gold_text !important;
+}
+
+.dataTables_wrapper .dataTables_info{
+    color: $gold_text;
+}
+
+th{
+    color: $gold_text !important;
+    background-color: rgb(70, 70, 70) !important;
+}
+
+td{
+    color: white !important;
+    background-color:rgb(51, 51, 51) !important ;
+}
+
+/* Rimuovi i bordi sopra e sotto dalla tabella */
+#orders-table {
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Applica bordi neri solo alle linee orizzontali in mezzo */
+#orders-table tbody tr td {
+    border-top: none;
+    border-bottom: 1px solid #000; /* Colore nero per le linee in mezzo */
+}
+
+/* Rimuovi il bordo superiore dell'ultima riga della tabella */
+#orders-table tbody tr:last-child td {
+    border-bottom: none;
 }
