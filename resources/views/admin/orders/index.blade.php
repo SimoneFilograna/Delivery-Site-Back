@@ -12,7 +12,7 @@
     }
 
     .container {
-        z-index: 1; /* Assicura che il contenuto sia sovrapposto all'immagine di sfondo */
+        z-index: 0; /* Assicura che il contenuto sia sovrapposto all'immagine di sfondo */
         position: relative;
     }
 

@@ -16,7 +16,7 @@
         }
 
         .container {
-            z-index: 1;
+            z-index: 0;
             /* Assicura che il contenuto sia sovrapposto all'immagine di sfondo */
             position: relative;
         }
@@ -27,9 +27,9 @@
         }
     </style>
 
-    <h1 class="my-3 text-start gold-text" style="margin-left: 8rem;">Modifica Piatto</h1>
-    <div class="container gold-text">
-        <div class="row justify-content-start">
+<div class="container gold-text">
+    <div class="row justify-content-start">
+            <h1 class="my-3 text-start gold-text"">Modifica Piatto</h1>
             <div class="card col-md-5 mb-5" style="background-color: transparent;">
                 <div class="login-box w-100 gold-text card-body login-body">
                     <form id="edit-plate" action="{{ route('admin.plates.update', $plate->id) }}" method="POST"

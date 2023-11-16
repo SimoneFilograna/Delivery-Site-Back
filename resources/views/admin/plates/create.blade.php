@@ -13,7 +13,7 @@
     }
 
     .container {
-        z-index: 1; /* Assicura che il contenuto sia sovrapposto all'immagine di sfondo */
+        z-index: 0; /* Assicura che il contenuto sia sovrapposto all'immagine di sfondo */
         position: relative;
     }
 
@@ -22,9 +22,9 @@
     }
 </style>
 
-<h1 class="py-2 text-start gold-text" style="margin-left: 7rem;">Aggiungi un piatto al menu!</h1>
 <div class="container gold-text">
-    <div class="row justify-content-start">
+    <div class="row justify-content-start ">
+        <h1 class="py-2 text-start gold-text">Aggiungi un piatto al menu!</h1>
         <div class="card col-md-5 mb-5" style="background-color: transparent;">
             <div class="login-box w-100 gold-text card-body login-body">
                 <form id="create-plate" action="{{ route('admin.plates.store') }}" method="POST" enctype="multipart/form-data" id="form">
