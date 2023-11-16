@@ -33,7 +33,7 @@
 
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center text-decoration-none logo_text" href="http://localhost:5174/home">
+                <a class="navbar-brand d-flex align-items-center text-decoration-none logo_text" href="http://localhost:5174/">
                     Deliveboo
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
