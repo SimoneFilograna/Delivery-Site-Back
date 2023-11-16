@@ -3,7 +3,7 @@
 @section("content")
 <style>
     body {
-        background-image: url('/img/4.jpg'); /* Sostituisci 'path/to/your/image.jpg' con il percorso dell'immagine */
+        background-image: url('/img/15.jpg'); /* Sostituisci 'path/to/your/image.jpg' con il percorso dell'immagine */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -22,9 +22,9 @@
     }
 </style>
 
+<h1 class="py-2 text-start gold-text" style="margin-left: 7rem;">Aggiungi un piatto al menu!</h1>
 <div class="container gold-text">
-    <div class="row justify-content-end">
-        <h1 class="py-2 text-end">Aggiungi un piatto al menu!</h1>
+    <div class="row justify-content-start">
         <div class="card col-md-5 mb-5" style="background-color: transparent;">
             <div class="login-box w-100 gold-text card-body login-body">
                 <form id="create-plate" action="{{ route('admin.plates.store') }}" method="POST" enctype="multipart/form-data" id="form">

@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="mb-4 user-box">
-                                <label for="name" class="col-form-label text-md-right">{{ __('Nome *') }}</label>
+                                <label for="name" class="col-form-label text-md-right">{{ __('Nome e Cognome *') }}</label>
 
                                 <div class="col">
                                     <input id="name" type="text"
