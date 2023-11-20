@@ -19,13 +19,6 @@ return new class extends Migration
                 ->references("id")
                 ->on("users");
 
-            // create cuisine_id column and make it foreign
-            $table->unsignedBigInteger("cuisine_id")->after("vat_number");
-
-            $table->foreign("cuisine_id")
-                ->references("id")
-                ->on("cuisines");
-
         });
     }
 
@@ -39,9 +32,6 @@ return new class extends Migration
             $table->dropForeign("restaurants_user_id_foreign");
             $table->dropColumn('user_id'); 
 
-            // remove foreign and drop cuisine_id column
-            $table->dropForeign("restaurants_cuisine_id_foreign");
-            $table->dropColumn('cuisine_id'); 
         });
     }
 };

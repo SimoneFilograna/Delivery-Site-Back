@@ -15,11 +15,11 @@ return new class extends Migration
 
             // create plates table with mysql data types
             $table->id();
-            $table->string("name", 100);
+            $table->string("plate_name", 100);
             $table->text("ingredients");
             $table->text("description");
             $table->decimal("price", 6,2);
-            $table->text("image");
+            $table->text("plate_image");
             $table->boolean("visibility");
             $table->timestamps();
         });

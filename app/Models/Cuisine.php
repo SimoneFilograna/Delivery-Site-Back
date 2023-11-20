@@ -10,7 +10,7 @@ class Cuisine extends Model
 {
     use HasFactory;
 
-    // Many to many relation to restaurant
+    // Many to many relation to restaurant with pivot table
     public function restaurants() {
         return $this->belongsToMany(Restaurant::class);
     }

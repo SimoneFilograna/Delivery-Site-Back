@@ -15,11 +15,11 @@ return new class extends Migration
 
             // create orders table with mysql data types
             $table->id();
-            $table->string("name", 100);
-            $table->string("lastname", 100);
-            $table->string("email", 100);
-            $table->string("address", 255);
-            $table->string("phone", 30);
+            $table->string("customer_name", 100);
+            $table->string("customer_lastname", 100);
+            $table->string("customer_email", 100);
+            $table->string("customer_address", 255);
+            $table->string("customer_phone", 30);
             $table->decimal("amount_paid", 6,2);
             $table->timestamps();
         });
